@@ -24,8 +24,8 @@ import {
 
 import provinces from './provinces';
 
-// Import SVG path data for each state to render the map
-import { provincePaths } from './provincePaths';
+// Import SVG path data for each province to render the map
+import provincePaths from './provincePaths';
 
 /* Main edit function for the block, 
 which renders the block in the editor and provides the UI for editing its attributes */
@@ -180,7 +180,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
 					{ /* List of selected provinces and their removal buttons */ }
 					{ selectedProvinces.length > 0 && (
-						<div className="maps-block-editor__selected-states">
+						<div className="maps-block-editor__selected-provinces">
 							<h4>Selected Provinces & Territories</h4>
 							<ul>
 								{ selectedProvinces.map( ( province ) => (
@@ -223,7 +223,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						where fill color is determined by whether the province is selected or not */ }
 
 						<div className="maps-block__image-wrapper">
-							<svg viewBox="0 0 1000 589">
+							<svg viewBox="0 440 800 595" preserveAspectRatio="xMidYMid meet">
 								{provincePaths.map((province) => (
 									<path
 									key={province.id}

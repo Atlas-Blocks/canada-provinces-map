@@ -1,6 +1,6 @@
 // Array of Canadian province and territory SVG paths used for rendering/filtering
 
-const provincesPaths = [
+const provincePaths = [
 	{
 		id: 'CA-AB',
 		name: 'Alberta',
@@ -68,4 +68,4 @@ const provincesPaths = [
 	}
 ];
 
-export default provincesPaths;
+export default provincePaths;

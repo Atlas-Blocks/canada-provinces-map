@@ -8,13 +8,17 @@ return array(
 		'version' => '0.1.0',
 		'title' => 'Canada Provinces Map',
 		'category' => 'widgets',
-		'icon' => 'smiley',
+		'icon' => 'location-alt',
 		'description' => 'Example block scaffolded with Create Block tool.',
 		'example' => array(
 			
 		),
 		'supports' => array(
-			'html' => false
+			'html' => false,
+			'align' => array(
+				'wide',
+				'full'
+			)
 		),
 		'textdomain' => 'canada-provinces-map',
 		'editorScript' => 'file:./index.js',

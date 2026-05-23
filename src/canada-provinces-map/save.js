@@ -1,5 +1,5 @@
 /* **
- * Save function for the USA States Map block.
+ * Save function for the Canadian Provinces Map block.
  * This component defines how the block's content is saved and rendered on the front end.
  *
  */
@@ -7,47 +7,54 @@
 // Import Gutenberg block utilities for saving block content
 import { useBlockProps } from '@wordpress/block-editor';
 
-// Import SVG path data for each state to render the map
-import { statesPaths } from './statePaths';
+// Import SVG path data for each province to render the map
+import provincePaths from './provincePaths';
 
 // Main save function for the block, which defines how the block's content is saved and rendered on the front end
 export default function save( { attributes } ) {
 	const {
-		title = '',
-		selectedStates = [],
-		listTitle = '',
-		showStateList = true,
-		activeStateColor = '#16a34a',
-		defaultStateColor = '#f9f9f9'
+		title = 'Canada Provinces & Territories Map',
+		selectedProvinces = [],
+		listTitle = 'Selected Provinces & Territories',
+		showProvinceList = true,
+		activeProvinceColor = '#16a34a',
+		defaultProvinceColor = '#f9f9f9'
 	} = attributes;
+
+	const totalRegions = provincePaths.length;
+
+	const selectedPercentage =
+		totalRegions > 0
+			? Math.round( ( selectedProvinces.length / totalRegions ) * 100 )
+			: 0;
 
 	return (
 		<div { ...useBlockProps.save() }>
 
 			{/* Wrapper for the entire block content on the front end, 
-			including the map and optional selected states list */ }
+			including the map and optional selected provinces list */ }
 
 			<div className="maps-block-wrapper">
 				<div className="maps-block">
 					<h2 className="maps-block__tag">{ title }</h2>
 
-					{/* SVG map rendering with paths for each state, 
-					where selected states are filled with activeStateColor 
-					and others with defaultStateColor */ }
+					{/* SVG map rendering with paths for each province, 
+					where selected provinces are filled with activeProvinceColor 
+					and others with defaultProvinceColor */ }
 
 					<div className="maps-block__image-wrapper">
-						<svg viewBox="0 0 1000 589">
-							{ statesPaths.map( ( state ) => (
+						<svg viewBox="0 440 800 595" preserveAspectRatio="xMidYMid meet">
+							{ provincePaths.map( ( province ) => (
 								<path
-									key={ state.id }
-									id={ state.id }
-									data-name={ state.name }
-									className={ `state ${ selectedStates.includes( state.name ) ? 'is-active' : '' }` }
-									d={ state.d }
+									key={ province.id }
+									id={ province.id }
+									data-name={ province.name }
+									className={ `province ${ selectedProvinces.includes( province.name ) ? 'is-active' : '' }` }
+									d={ province.d }
 									style={ {
-										fill: selectedStates.includes( state.name )
-											? activeStateColor
-											: defaultStateColor,
+										fill: selectedProvinces.includes( province.name )
+											? activeProvinceColor
+											: defaultProvinceColor,
 									} }
 								/>
 							) ) }
@@ -55,52 +62,52 @@ export default function save( { attributes } ) {
 					</div>
 				</div>
 
-				{/* Conditionally render the selected states list and progress bar if showStateList is true */ }
+				{/* Conditionally render the selected provinces list and progress bar if showProvinceList is true */ }
 
-				{ showStateList && (
+				{ showProvinceList && (
 					<div className="maps-block-selected">
 						<div className="maps-block-selected__header">
 							<div className="maps-block-selected__header-main">
 								<h3 className="maps-block-selected__title">
-									{ listTitle || 'Selected States' }
+									{ listTitle || 'Selected Provinces & Territories' }
 								</h3>
 								<span className="maps-block-selected__count">
-									{ selectedStates.length } selected states
+									{ selectedProvinces.length } selected
 								</span>
 							</div>
 
-							{ /* Progress bar showing the percentage of selected states in bar and label */ }
+							{ /* Progress bar showing the percentage of selected provinces in bar and label */ }
 							<div className="maps-block-selected__progress">
-								<div className="maps-block-selected__progress-label">
-									<span>{ selectedStates.length } of 50 States</span>
-									<span>{ Math.round( ( selectedStates.length / 50 ) * 100 ) }%</span>
-								</div>
+								<span>
+									{ selectedProvinces.length } of { totalRegions } Provinces & Territories
+								</span>
+								<span>{ selectedPercentage }%</span>
 
 								<div className="maps-block-selected__progress-bar">
 									<div
 										className="maps-block-selected__progress-fill"
 										style={ {
-											width: `${ ( selectedStates.length / 50 ) * 100 }%`,
+											width: `${ selectedPercentage }%`,
 										} }
 									/>
 								</div>
 							</div>
 						</div>
 
-						{ /* Body of the selected states list, 
-						showing either the list of selected states or a message if none are selected */ }
+						{ /* Body of the selected provinces list, 
+						showing either the list of selected provinces or a message if none are selected */ }
 						<div className="maps-block-selected__body">
-							{ selectedStates.length > 0 ? (
+							{ selectedProvinces.length > 0 ? (
 								<div className="maps-block-selected__list">
-									{ [ ...selectedStates ].sort().map( ( state ) => (
-										<div key={ state } className="maps-block-selected__item">
-											<span className="maps-block-selected__name">{ state }</span>
+									{ [ ...selectedProvinces ].sort().map( ( province ) => (
+										<div key={ province } className="maps-block-selected__item">
+											<span className="maps-block-selected__name">{ province }</span>
 										</div>
 									) ) }
 								</div>
 							) : (
 								<p className="maps-block-selected__empty">
-									No states selected yet
+									No provinces or territories selected yet
 								</p>
 							) }
 						</div>
