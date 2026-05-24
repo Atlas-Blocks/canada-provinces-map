@@ -2,7 +2,7 @@
 
 A customizable Gutenberg block for displaying an interactive map of Canada inside the WordPress editor.
 
-The Canada Provinces Map block lets users highlight selected provinces and territories, customize map colors, and optionally display a clean selected-region list beneath the map. It is designed for websites that need to show availability, service areas, legal access, regional coverage, expansion plans, travel guides, or location-based content.
+The Canada Provinces Map block lets users highlight selected provinces and territories, customize map colours, and optionally display a clean selected-region list beneath the map. It is designed for websites that need to show availability, service areas, legal access, regional coverage, expansion plans, travel guides, or location-based content.
 
 ---
 
@@ -64,19 +64,16 @@ The Canada Provinces Map block lets users highlight selected provinces and terri
 
 <table width="100%">
   <tr>
-    <th width="33%" align="center">Election Example</th>
-    <th width="33%" align="center">Product Availability</th>
-    <th width="33%" align="center">Legality</th>
+    <th width="50%" align="center">Product Availability</th>
+    <th width="50%" align="center">Legality
+</th>
   </tr>
   <tr>
-    <td width="33%" align="center" valign="top">
-      <img width="100%" alt="Canada map block election example" src="PUT SCREENSHOT URL HERE" />
+    <td width="50%" align="center" valign="top">
+      <img width="1147" height="959" alt="Product Available Example Image" src="https://github.com/user-attachments/assets/a491831f-5f34-42dc-a5a2-291a0f3750e5" />
     </td>
-    <td width="33%" align="center" valign="top">
-      <img width="100%" alt="Canada map block product availability example" src="PUT SCREENSHOT URL HERE" />
-    </td>
-    <td width="33%" align="center" valign="top">
-      <img width="100%" alt="Canada map block legality example" src="PUT SCREENSHOT URL HERE" />
+    <td width="50%" align="center" valign="top">
+      <img width="100%" alt="Legality Example Image" src="https://github.com/user-attachments/assets/812db2ba-d4c2-4e39-8e53-779868101c16" />
     </td>
   </tr>
 </table>
@@ -88,8 +85,8 @@ The Canada Provinces Map block lets users highlight selected provinces and terri
 - Interactive SVG-based map of Canada
 - Includes all 10 provinces and 3 territories
 - Click-to-select provinces and territories inside the editor
-- Custom active region color
-- Custom default region color
+- Custom active region colour
+- Custom default region colour
 - Optional selected provinces and territories list
 - Searchable region selector
 - Floating map title/tag
@@ -142,8 +139,8 @@ The Canada Provinces Map block includes editable settings for:
 - Map title
 - Selected list title
 - Selected provinces and territories
-- Active region color
-- Default region color
+- Active region colour
+- Default region colour
 - Province/territory list visibility
 
 ---
@@ -231,7 +228,8 @@ The block uses SVG paths to visually represent provinces and territories. Additi
 
 Possible future improvements:
 
-- Hover color controls
+- Provincial grouping with unique colours for each region (EX: Election usage)
+- Hover colour controls
 - Tooltip support for each province and territory
 - Optional province/territory grouping
 - Custom links for each selected region
@@ -248,6 +246,12 @@ Possible future improvements:
 Created by **Atlas Blocks**.
 
 Atlas Blocks focuses on building unique, visual Gutenberg blocks for WordPress websites.
+
+---
+
+## Credits
+
+SVG Map Provided for free use by: https://mapsvg.com/maps/canada
 
 ---
 
